@@ -1,0 +1,16 @@
+[Unit]
+Description=sksat display manager
+# Documentation=
+
+# これより先に起動するべきUnit
+After=systemd-user-sessions.service
+
+[Service]
+# 起動コマンド
+ExecStart=/usr/bin/skdm
+# プロセス停止時の再起動条件．on-failureは0以外で終了した時
+Restart=on-failure
+
+[Install]
+# enable時にこのUnitの別名を用意する(display-manager.serviceとしても参照できる)
+Alias=display-manager.service
